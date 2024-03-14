@@ -1,0 +1,69 @@
+
+Spectral Subtraction with Time-Frequency Filtering for Speech Enhancement
+
+Abstract
+To develop a speech-to-text (STT) system using Kaldi speech recognition toolkit for continuous Kannada language/dialects. A continuous Kannada speech data is collected from 100 speakers/farmers of Karnataka state in field. The lexicon/dictionary and set of phonemes for Kannada language/dialects are created and transcribed the collected speech data using transcriber tool. The ASR models are developed at different phoneme levels using Kaldi. In this work, an effort is made to develop a robust small vocabulary STT system for continuous Kannada language using Kaldi. The various acoustic modelling techniques are used ad achieved a word error rate (WER) of 0.23%. The performance of the to develop a robust ASR model and achieved a ASR model is analysed by offline speech recognition.
+Keywords: Spectral subtraction, time-frequency, PESQ, SNR, NCM.
+1. Introduction
+Speech enhancement is the fundamental application of speech processing. Spectral subtraction (SS) [1] is by far the most popular method in speech enhancement, possibly because of its simplicity. A well-known shortcoming of the SS algorithms is the resulting residual noise consisting of musical tones. To overcome the musical noise problem, spectral smoothing has been suggested but it results in low resolution and variance [2]. In our previous work, an amalgamation of SS-VAD and linear predictive coding system to advance the SNR and enhanced audibility features of encoded speech data was proposed [3]. It was observed that the resulting musical noise due to SS had an adverse effect on encoding performance.
+
+2. Methodology
+In this Section, for completeness, we precisely describe the SS-VAD and implement the proposed SS- TF for speech enhancement.
+y(n)=s(n)+n(n)                                                                     (1)
+The Fourier transform of the above equation is
+Y(ω)=S(ω)+N(ω)                                                                      (2)
+The Hanning window can be mathematically represented as
+W(n)=0.5-0.5 cos⁡(2πn/N);0≤n≤N                                          (3)
+
+
+All these parameters were used for calculating the factor Z is given by
+                                                          Z=E(1-ZCR)(1-NLPE)                                                                             (4)                                
+
+The spectral subtraction output can be written as follows:
+   |(S ̃_i (ω)|=|X_i (ω)|-μ_i (ω); ω=0,1,…,L-1&i=0,1,…L-1                                                    (5)) ̃
+ The residual noise by mathematical shown below
+|S ̃_i (ω)={█(S ̃_i (ω);                   |S_i (ω)|≥max⁡|N_R (ω)|@   {min{█(i+1@j=i-1)┤ S_j (ω)|}; |S_i (ω)|≥max⁡|N_R (ω)| )┤|                                                (6)
+N_i (k)=(1-α) Y_i (k)+αN_i (k-1)                         (7)
+
+The Block diagram of proposed Technique for background noise reduction is shown here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table 1: PESQ values for proposed and existing methods for the assessment of speech quality.
+Algorithm                        Types of Noise                     0 dB                                    5 dB
+                                           Airport                                1.9085                               2.1752
+                                           Exhibition                           1.6571                               1.9992
+ SS-VAD                            Restaurant                           1.9950                               2.0314
+                                           Station                                 1.6517                               2.1396
+                                           Airport                                 1.9501                               2.1758
+                                           Exhibition                            1.6614                               2.0123
+Proposed (SS-TF)             Restaurant                             2.0900                               2.0364
+                                           Station                                  1.6801                               2.1294
+                             
+
+3. Conclusion
+            We proposed the SS-TF filtering method for speech enhancement with promising for different noise types and SNR levels was observed.
+ References
+
+	Kuldip Paliwal, Kamil W_ojcicki, and Belinda Schwerin. Single-channel speech enhancement using spectral subtraction in the short-time modulation domain. Speech communication, 52(5):450-475, 2010. DOI:10.1016/j.specom.2010.02.004
+
+	Radu Mihnea Udrea, Nicolae D Vizireanu, and Silviu Ciochina. An improved spectral subtraction method for speech enhancement using a perceptual weighting filter. Digital Signal Processing, 18(4):581-587, 2008. DOI:10.1016/j.dsp.2007.08.002
+
+	Harald Gustafsson, Sven E Nordholm, and Ingvar Claesson. Spectral subtraction using reduced delay convolution and adaptive averaging. IEEE transactions on speech and audio processing, 9(8):799- 807, 2001. DOI: 10.1109/89.966083
